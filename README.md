@@ -3,6 +3,7 @@ Project for the Neural Networks course @cse.uoi.gr
 
 ## Clustering Methods
   - [K-means](clustering/kmeans/)
+  - [Learning Vector Quantization](clustering/lvq/)
 
 ## Developer
 [George Z. Zachos](https://gzachos.com)
