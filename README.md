@@ -1,8 +1,8 @@
 # nn-course-uoi
 Project for the Neural Networks course @cse.uoi.gr
 
-## Clustering
-[Clustering Methods](clustering)
+## Clustering Methods
+  - [K-means](clustering/kmeans/)
 
 ## Developer
 [George Z. Zachos](https://gzachos.com)
