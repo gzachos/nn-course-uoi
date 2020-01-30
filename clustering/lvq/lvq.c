@@ -29,6 +29,12 @@
 #include "../common.h"
 #include "conf.h"
 
+#if 0
+	#define WRITE_CLUSTER_DATA
+#else
+	#undef WRITE_CLUSTER_DATA
+#endif
+
 #define DATASET_FILEPATH	"../datasets/dataset.csv"
 #define BUFFER_SIZE		64
 #define POW2(x)			(powf((x),2))
@@ -54,7 +60,9 @@ float  distance(pattern_t p1, float p2[2]);
 float  calc_clustering_error();
 int    write_plot_data();
 int    write_centroids();
+#ifdef WRITE_CLUSTER_DATA
 int    write_cluster_data(int ci);
+#endif
 
 /* Global data */
 pattern_t dataset[DATASET_SIZE];
@@ -239,10 +247,13 @@ void load_dataset(char *filepath, pattern_t *set, int set_size)
 
 int write_plot_data()
 {
-	int ci, ec = 0;
+	int ec = 0;
+#ifdef WRITE_CLUSTER_DATA
+	int ci;
 
 	for (ci = 0; ci < M && ec == 0; ci++)
 		ec += write_cluster_data(ci);
+#endif
 	ec += write_centroids();
 
 	return ec;
@@ -269,6 +280,7 @@ int write_centroids()
 }
 
 
+#ifdef WRITE_CLUSTER_DATA
 int write_cluster_data(int ci)
 {
 	FILE *fp;
@@ -289,4 +301,4 @@ int write_cluster_data(int ci)
 
 	return 0;
 }
-
+#endif
